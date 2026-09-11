@@ -1,0 +1,57 @@
+version: '3.4'
+
+services:
+  cuentadb:
+    container_name: cuentadb
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=CuentaDb
+    restart: always
+    ports:
+        - "5432:5432"
+    volumes:
+      - postgres_cuenta:/var/lib/postgresql/data/
+
+  pgadmin:
+    container_name: pgadmin
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: prueba@prueba.com
+      PGADMIN_DEFAULT_PASSWORD: prueba123456
+    volumes:
+      - pg_adminCuenta:/var/lib/pgadmin
+    depends_on:
+      - cuentadb
+
+  client.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ASPNETCORE_HTTPS_PORTS=8081
+      - ConnectionStrings__Database=Server=cuentadb;Port=5432;Database=CuentaDb;User Id=postgres;Password=postgres;Include Error Detail=true
+    ports:
+      - "5000:8080"
+      - "5050:8081"
+    depends_on:
+      - cuentadb
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+  
+  account.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ASPNETCORE_HTTPS_PORTS=8081
+      - ConnectionStrings__Database=Server=cuentadb;Port=5432;Database=MovimientoDb;User Id=postgres;Password=postgres;Include Error Detail=true
+    ports:
+      - "5001:8080"
+      - "5051:8081"
+    depends_on:
+      - cuentadb
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
