@@ -1,5 +1,4 @@
 ﻿using Client.Application.Abstractions;
-using Client.Application.Data;
 
 namespace Client.Application.Clientes.Commands.CreateCliente;
 

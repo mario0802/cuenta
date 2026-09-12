@@ -1,5 +1,6 @@
 ﻿
 
+using BuildingBlocks.Auth;
 
 namespace Account.Infrastructure;
 
@@ -14,7 +15,6 @@ public static class DependencyInjection
         services.AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>();
         services.AddScoped<AuditableEntityInterceptor>();
         services.AddScoped<INumeroCuentaGenerator, NumeroCuentaGenerator>();
-
         services.AddDbContext<AccountDbContext>((sp, options) =>
         {
             options.AddInterceptors(sp.GetServices<ISaveChangesInterceptor>());
@@ -22,6 +22,11 @@ public static class DependencyInjection
         });
 
         services.AddScoped<IApplicationDbContext>(sp => sp.GetRequiredService<AccountDbContext>());
+
+        services.AddHttpClient<IClientServiceClient, ClientServiceClient>(client =>
+        {
+            client.BaseAddress = new Uri(configuration["ClientService:BaseUrl"]!);
+        });
 
         return services;
     }

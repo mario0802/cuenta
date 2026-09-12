@@ -9,7 +9,9 @@ global using Account.Domain.ValueObjects;
 
 global using Account.Application.Data;
 global using Account.Application.Abstractions;
+global using Account.Application.Common.Interfaces;
 
 global using Account.Infrastructure.Data;
 global using Account.Infrastructure.Services;
 global using Account.Infrastructure.Data.Interceptors;
+global using Account.Infrastructure.ExternalServices;

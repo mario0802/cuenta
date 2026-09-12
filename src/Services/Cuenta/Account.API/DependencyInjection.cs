@@ -1,4 +1,5 @@
-﻿using HealthChecks.UI.Client;
+﻿using BuildingBlocks.Auth;
+using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using System.Text.Json.Serialization;
 
@@ -12,6 +13,8 @@ public static class DependencyInjection
         services.AddHealthChecks()
             .AddNpgSql(configuration.GetConnectionString("Database")!);
 
+        services.AddJwtAuthentication(configuration);
+
         services.ConfigureHttpJsonOptions(options =>
         {
             options.SerializerOptions.Converters.Add(new JsonStringEnumConverter());
@@ -22,6 +25,9 @@ public static class DependencyInjection
 
     public static WebApplication UseApiServices(this WebApplication app)
     {
+        app.UseAuthentication();
+        app.UseAuthorization();
+
         app.MapCarter();
         app.UseExceptionHandler(options => { });
         app.UseHealthChecks("/health",

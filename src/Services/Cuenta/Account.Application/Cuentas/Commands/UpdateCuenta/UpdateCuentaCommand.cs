@@ -4,7 +4,7 @@ namespace Account.Application.Cuentas.Commands.UpdateCuenta;
 public record UpdateCuentaCommand(Guid Id, UpdateCuentaDto Cuenta)
     : ICommand<UpdateCuentaResult>;
 
-public record UpdateCuentaResult(Guid Id);
+public record UpdateCuentaResult(bool isSuccess);
 
 public record UpdateCuentaDto(
     TipoCuenta TipoCuenta,

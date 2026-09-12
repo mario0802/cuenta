@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Account.API.Endpoints;
 
 public record UpdateCuentaRequest(UpdateCuentaDto Cuenta);
-public record UpdateCuentaResponse(Guid Id);
+public record UpdateCuentaResponse(bool isSuccess);
 
 public class UpdateCuenta : ICarterModule
 {

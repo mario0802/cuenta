@@ -20,6 +20,6 @@ public class UpdateCuentaHandler(IApplicationDbContext dbContext)
 
         await dbContext.SaveChangesAsync(cancellationToken);
 
-        return new UpdateCuentaResult(cuenta.Id.Value);
+        return new UpdateCuentaResult(true);
     }
 }
