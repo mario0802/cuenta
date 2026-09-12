@@ -8,7 +8,7 @@ public class GetMovimientosByCuenta : ICarterModule
 {
     public void AddRoutes(IEndpointRouteBuilder app)
     {
-        app.MapGet("/movimientos/{cuentaId:guid}", async (
+        app.MapGet("/movimientos/cuentas/{cuentaId:guid}", async (
             Guid cuentaId,
             [AsParameters] PaginationRequest pagination,
             ISender sender,

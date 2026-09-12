@@ -1,5 +1,3 @@
-version: '3.4'
-
 services:
   cuentadb:
     container_name: cuentadb
@@ -32,6 +30,10 @@ services:
       - ASPNETCORE_HTTP_PORTS=8080
       - ASPNETCORE_HTTPS_PORTS=8081
       - ConnectionStrings__Database=Server=cuentadb;Port=5432;Database=CuentaDb;User Id=postgres;Password=postgres;Include Error Detail=true
+      - Jwt__Secret=sodnqowndoasnjounqeguonwsojasndjoasdnj
+      - Jwt__Issuer=Auth
+      - Jwt__Audience=AuthService
+      - Jwt__AccessTokenExpirationMinutes=60
     ports:
       - "5000:8080"
       - "5050:8081"
@@ -47,11 +49,17 @@ services:
       - ASPNETCORE_HTTP_PORTS=8080
       - ASPNETCORE_HTTPS_PORTS=8081
       - ConnectionStrings__Database=Server=cuentadb;Port=5432;Database=MovimientoDb;User Id=postgres;Password=postgres;Include Error Detail=true
+      - ClientService__BaseUrl=http://client.api:8080/
+      - Jwt__Secret=sodnqowndoasnjounqeguonwsojasndjoasdnj
+      - Jwt__Issuer=Auth
+      - Jwt__Audience=AuthService
+      - Jwt__AccessTokenExpirationMinutes=60
     ports:
       - "5001:8080"
       - "5051:8081"
     depends_on:
       - cuentadb
+      - client.api
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro

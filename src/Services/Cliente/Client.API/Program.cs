@@ -16,3 +16,5 @@ if (app.Environment.IsDevelopment())
     await app.InitialiseDatabaseAsync();
 }
 app.Run();
+
+public partial class Program { }

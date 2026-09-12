@@ -25,7 +25,7 @@ public class CuentaConfiguration : IEntityTypeConfiguration<Cuenta>
         builder.HasIndex(c => c.ClienteId);
 
         builder.Property(c => c.NumeroCuenta)
-            .HasMaxLength(12)
+            .HasMaxLength(15)
             .IsRequired();
 
         builder.HasIndex(c => c.NumeroCuenta)

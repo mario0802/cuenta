@@ -11,11 +11,17 @@ public static class DependencyInjection
         services.AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>();
         services.AddScoped<AuditableEntityInterceptor>();
         services.AddScoped<IPasswordHasher, BCryptPasswordHasher>();
+        services.AddScoped<ILoginTokenGenerator, JwtLoginTokenGenerator>();
+
 
         services.AddDbContext<ClienteDbContext>((sp, options) =>
         {
             options.AddInterceptors(sp.GetServices<ISaveChangesInterceptor>());
             options.UseNpgsql(connectionString);
+        });
+        services.AddHttpClient<IAccountServiceClient, AccountServiceClient>(client =>
+        {
+            client.BaseAddress = new Uri(configuration["AccountService:BaseUrl"]!);
         });
 
         services.AddScoped<IApplicationDbContext>(sp => sp.GetRequiredService<ClienteDbContext>());
