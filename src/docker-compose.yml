@@ -19,6 +19,13 @@ services:
       context: .
       dockerfile: Services/Cuenta/Account.API/Dockerfile
 
+  apigateway:
+    image: ${DOCKER_REGISTRY-}apigateway
+    build:
+      context: .
+      dockerfile: ApiGateway/ApiGateway/Dockerfile
+
 volumes:
   postgres_cuenta:
   pg_adminCuenta:
+

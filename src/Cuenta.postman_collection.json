@@ -1,0 +1,464 @@
+{
+  "info": {
+    "_postman_id": "ceaf4726-94fa-4adf-9d8e-fcb3887fb83e",
+    "name": "Cuenta",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "16432217"
+  },
+  "item": [
+    {
+      "name": "CreateCliente",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"cliente\": {\r\n        \"Nombre\": \"Mario\",\r\n        \"Genero\": \"Masculino\",\r\n        \"Edad\": 26,\r\n        \"Identificacion\": \"1316550654\",\r\n        \"Direccion\": \"Km 4 1/2 via manta montecristi\",\r\n        \"Telefono\": \"0993899824\",\r\n        \"Password\": \"123456789\"\r\n    }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://localhost:5050/clientes",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "5050",
+          "path": [
+            "clientes"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GetClientes",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://localhost:5050/clientes?PageIndex=0&PageSize=10",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "5050",
+          "path": [
+            "clientes"
+          ],
+          "query": [
+            {
+              "key": "PageIndex",
+              "value": "0",
+              "type": "text"
+            },
+            {
+              "key": "PageSize",
+              "value": "10",
+              "type": "text"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GetClienteById",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"cliente\": {\r\n        \"id\" : \"5d8c034d-5997-4a65-95df-3e95723bb298\",\r\n        \"Nombre\": \"Mario David\",\r\n        \"Genero\": \"Masculino\",\r\n        \"Edad\": 26,\r\n        \"Direccion\": \"Km 4 1/2 via manta montecristi\",\r\n        \"Telefono\": \"0993899824\"\r\n    }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://localhost:5050/clientes/2504c99f-7541-4e80-b962-933d5b081d17",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "5050",
+          "path": [
+            "clientes",
+            "2504c99f-7541-4e80-b962-933d5b081d17"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "UpdateClient",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"cliente\": {\r\n        \"id\" : \"5d8c034d-5997-4a65-95df-3e95723bb298\",\r\n        \"Nombre\": \"Mario David\",\r\n        \"Genero\": \"Masculino\",\r\n        \"Edad\": 26,\r\n        \"Direccion\": \"Km 4 1/2 via manta montecristi\",\r\n        \"Telefono\": \"0993899824\"\r\n    }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://localhost:5050/clientes/5d8c034d-5997-4a65-95df-3e95723bb298",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "5050",
+          "path": [
+            "clientes",
+            "5d8c034d-5997-4a65-95df-3e95723bb298"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "DeleteCliente",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "https://localhost:5050/clientes/5d8c034d-5997-4a65-95df-3e95723bb298",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "5050",
+          "path": [
+            "clientes",
+            "5d8c034d-5997-4a65-95df-3e95723bb298"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "CreateCuenta",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"cuenta\": {\r\n        \"ClienteId\": \"2504c99f-7541-4e80-b962-933d5b081d17\",\r\n        \"TipoCuenta\": \"Ahorro\",\r\n        \"SaldoInicial\": 1000.50\r\n    }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://localhost:5051/cuentas",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "5051",
+          "path": [
+            "cuentas"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "UpdateCuenta",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"cuenta\":{\r\n        \"TipoCuenta\":\"Corriente\",\r\n        \"EstadoCuenta\": \"Activa\"\r\n    }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://localhost:5051/cuentas/ac51d02e-ae33-4fbb-80c5-50ad56937ebc",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "5051",
+          "path": [
+            "cuentas",
+            "ac51d02e-ae33-4fbb-80c5-50ad56937ebc"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GetCuentas",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://localhost:5051/cuentas?PageIndex=0&PageSize=10",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "5051",
+          "path": [
+            "cuentas"
+          ],
+          "query": [
+            {
+              "key": "PageIndex",
+              "value": "0",
+              "type": "text"
+            },
+            {
+              "key": "PageSize",
+              "value": "10",
+              "type": "text"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GetCuentaById",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://localhost:5051/cuentas/ac51d02e-ae33-4fbb-80c5-50ad56937ebc",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "5051",
+          "path": [
+            "cuentas",
+            "ac51d02e-ae33-4fbb-80c5-50ad56937ebc"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GetCuentasByIdCliente",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://localhost:5051/clientes/2504c99f-7541-4e80-b962-933d5b081d17/cuentas",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "5051",
+          "path": [
+            "clientes",
+            "2504c99f-7541-4e80-b962-933d5b081d17",
+            "cuentas"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "CreateMovimiento",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"movimiento\": {\r\n        \"CuentaId\": \"ac51d02e-ae33-4fbb-80c5-50ad56937ebc\",\r\n        \"TipoMovimiento\": \"Deposito\",\r\n        \"Valor\": 500\r\n    }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://localhost:5051/movimientos",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "5051",
+          "path": [
+            "movimientos"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "UpdateMovimiento",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n        \"TipoMovimiento\": \"Retiro\",\r\n        \"Valor\": 500\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://localhost:5051/movimientos/35ece312-711d-4493-b1e2-881c1a2004e8/cuentas/ac51d02e-ae33-4fbb-80c5-50ad56937ebc",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "5051",
+          "path": [
+            "movimientos",
+            "35ece312-711d-4493-b1e2-881c1a2004e8",
+            "cuentas",
+            "ac51d02e-ae33-4fbb-80c5-50ad56937ebc"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GetMovimientosByCuenta",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://localhost:5051/movimientos/cuentas/ac51d02e-ae33-4fbb-80c5-50ad56937ebc",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "5051",
+          "path": [
+            "movimientos",
+            "cuentas",
+            "ac51d02e-ae33-4fbb-80c5-50ad56937ebc"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GetMovimientosByCuentaAndFecha",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://localhost:5051/movimientos/cuentas/ac51d02e-ae33-4fbb-80c5-50ad56937ebc/reporte?fechaDesde=2026-09-11T15:11:30Z&fechaHasta=2026-09-12T15:11:30Z",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "5051",
+          "path": [
+            "movimientos",
+            "cuentas",
+            "ac51d02e-ae33-4fbb-80c5-50ad56937ebc",
+            "reporte"
+          ],
+          "query": [
+            {
+              "key": "fechaDesde",
+              "value": "2026-09-11T15:11:30Z",
+              "type": "text"
+            },
+            {
+              "key": "fechaHasta",
+              "value": "2026-09-12T15:11:30Z",
+              "type": "text"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GetDetalleCuentasByUsuario",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://localhost:5051/reportes/2504c99f-7541-4e80-b962-933d5b081d17?fechaDesde=2026-09-11T15:11:30Z&fechaHasta=2026-09-12T15:11:30Z",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "5051",
+          "path": [
+            "reportes",
+            "2504c99f-7541-4e80-b962-933d5b081d17"
+          ],
+          "query": [
+            {
+              "key": "fechaDesde",
+              "value": "2026-09-11T15:11:30Z"
+            },
+            {
+              "key": "fechaHasta",
+              "value": "2026-09-12T15:11:30Z"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "login",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"login\":{\r\n        \"Identificacion\":\"1316550654\",\r\n        \"Password\":\"123456789\"\r\n    }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://localhost:5050/clientes/login",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "5050",
+          "path": [
+            "clientes",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
